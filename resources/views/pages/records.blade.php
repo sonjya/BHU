@@ -14,11 +14,7 @@
             <div class="card-body">
                 <h1>Records</h1>
                 <div class="row">
-                    <div class="col-8">
-                        <button type="button" class="btn btn-outline-primary btn-sm mt-2" data-bs-toggle="modal" data-bs-target="#staticBackdrop">
-                            <span class="mdi mdi-file-document-plus"></span> ADD
-                        </button>
-                    </div>
+                    <div class="col-8"></div>
                     <div class="col-4">
                         <input type="text" name="search" class="form-control" placeholder="Search">
                     </div>
@@ -27,27 +23,15 @@
                 <table class="table table-hover">
                     <thead>
                         <tr>
-                            <th class="col-1">Date</th>
-                            <th>Name</th>
-                            <th>Age</th>
-                            <th>Sex</th>
-                            <th>ICD 10</th>
-                            <th>Actions</th>
+                            <th>ACTIVITIES</th>
+                            <th>JANUARY</th>
+                            <th>FERBRUARY</th>
+                            <th>MARCH</th>
+                            <th>1st Q</th>
+                            <th>APRIL</th>
                         </tr>
                     </thead>
-                    <tbody>
-                       <tr>
-                            <td>2022-11-23</td>
-                            <td>Toyiks Bronze</td>
-                            <td>18</td>
-                            <td>Male</td>
-                            <td>ADD-B99</td>
-                            <td>
-                                <a href="" class="btn btn-outline-warning btn-sm"><span class="mdi mdi-file-edit"></span></a>
-                                <a href="" class="btn btn-outline-danger btn-sm"><span class="mdi mdi-delete-forever"></span></a>
-                            </td>
-                       </tr>
-                    </tbody>
+            
                 </table>
     
             </div>
