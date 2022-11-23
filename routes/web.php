@@ -2,7 +2,6 @@
 
 use App\Http\Controllers\UserController;
 use App\Http\Controllers\IcdController;
-use App\Models\User;
 use Illuminate\Support\Facades\Route;
 
 /*

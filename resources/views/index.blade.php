@@ -24,16 +24,16 @@
                         <div class="col-6">
                             <div class="form-check">
                                 <input class="form-check-input" type="checkbox" value="" id="flexCheckDefault">
-                                <label class="form-check-label" for="flexCheckDefault">
+                                <label class="form-check-label" for="flexCheckDefault" style="color:white;">
                                     Remember me
                                 </label>
                             </div>
                         </div>
                         <div class="col-6">
-                            <a href="#">Forgot password?</a>
+                            <a href="#" class="forgot-password">Forgot password?</a>
                         </div>
                     </div>
-                    <input type="submit" class="btn btn-outline-primary mt-4 col-12" value="LOGIN">
+                    <input type="submit" class="btn btn-primary mt-4 col-12" value="LOGIN">
 
                     @if (session('error_message'))
                         <div class="login-error-messages mt-3">
@@ -49,21 +49,33 @@
                 </div>
             </div>
         </form>
+    
     </div>
 
+    <div class="container-fluid footer">
+        <img src="{{ asset('http://127.0.0.1:8000/images/davao-logo.png') }}"  width="200" height="200" alt="description of myimage">
+    </div>
 
 
     @extends('common.scripts')
 </body>
 <style>
     .body-bg {
+        background-image: url('http://127.0.0.1:8000/images/ilangcenter.jpg');
         background-position: center center;
         background-repeat: no-repeat;
         background-size: cover;
+        height: 100vh;
+        width: 100%;
+        overflow: hidden;
     }
     .login-title {
         margin-top:250px;
+        font-size:10ch;
         text-align: center;
+    }
+    .forgot-password {
+        color:aqua;
     }
     .login-subtitle {
         margin-top: 50px;
@@ -73,8 +85,8 @@
         margin-top:30px;
         align-content: center;
     }
-    .login-error-messages {
-
+    .footer {
+        margin-top: 100px;
     }
 </style>
 </html>
