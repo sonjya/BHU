@@ -14,8 +14,8 @@
     @extends('common.sidebar')
     
     <div class="container">
-        <h1>DASHBOARD</h1>
         <div class="card component">
+            <h1>DASHBOARD</h1>
             <div class="card-body">
                 <canvas id="myChart" style="width:100%;max-width:1200%"></canvas>
             </div>
