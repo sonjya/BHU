@@ -21,6 +21,8 @@ class IcdController extends Controller
         $item = new Icd;
         $item->code = $request->code;
         $item->description = $request->description;
+        $item->created_at = now();
+        $item->updated_at = now();
         $item->save();
         return redirect('/ICD');
     }

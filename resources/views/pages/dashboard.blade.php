@@ -13,9 +13,9 @@
 <body class="body-style">
     @extends('common.sidebar')
     
-    <div class="container dashboard-component">
+    <div class="container">
         <h1>DASHBOARD</h1>
-        <div class="card dashboard-chart">
+        <div class="card component">
             <div class="card-body">
                 <canvas id="myChart" style="width:100%;max-width:1200%"></canvas>
             </div>
@@ -56,8 +56,9 @@
     .body-style {
         background-color: #E0E0E0E0;
     }
-    .dashboard-component {
+    .component {
         margin-top: 50px;
+        margin-left:200px;
     }
 </style>
 

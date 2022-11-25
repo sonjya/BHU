@@ -1,4 +1,4 @@
-<div class="offcanvas offcanvas-start show" style="width: 200px;" data-bs-scroll="true" data-bs-backdrop="false" tabindex="-1" id="offcanvasScrolling" aria-labelledby="offcanvasScrollingLabel">
+<div class="offcanvas offcanvas-start show" style="width: 300px;" data-bs-scroll="true" data-bs-backdrop="false" tabindex="-1" id="offcanvasScrolling" aria-labelledby="offcanvasScrollingLabel">
     <div class="offcanvas-header">
         <h5 class="offcanvas-title" id="offcanvasScrollingLabel">BHU Health Care Profiling and Reporting System</h5>
     </div>
@@ -31,6 +31,6 @@
         background-color:#fa6d74c0;
     }
     .sidebar-logout-button {
-        margin-top: 200px;
+        margin-top: 100px;
     }
 </style>

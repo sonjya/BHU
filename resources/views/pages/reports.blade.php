@@ -95,6 +95,7 @@
     }
     .component {
         margin-top: 100px;
+        margin-left:200px;
     }
 </style>
 </html>
