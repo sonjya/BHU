@@ -21,13 +21,6 @@ Route::get('/', function () {
     return view('index');
 });
 
-// Route::get('/dashboard', function () {
-//     if(session('id')) {
-//         return view('pages.dashboard');
-//     } else {
-//         return redirect('/');
-//     }
-// });
 Route::get('/records', function () {
     if(session('id')) {
         return view('pages.records');
