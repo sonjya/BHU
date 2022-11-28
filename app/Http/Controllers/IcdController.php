@@ -8,12 +8,25 @@ use Illuminate\Http\Request;
 class IcdController extends Controller
 {
     function getICD() {
-        $result = Icd::orderby('code')->get();
-        return view('pages.ICD', compact('result'));
+
+        if(session('id')) {
+            $result = Icd::orderby('code')
+            ->limit(10)
+            ->get();
+            return view('pages.ICD', compact('result'));
+        } else {
+            return redirect('/');
+        }
+        // $result = Icd::orderby('code')
+        // ->limit(10)
+        // ->get();
+        // return view('pages.ICD', compact('result'));
     }
 
     function searchICD(Request $request) {
-        $result = Icd::where('code','like','%'. $request->search .'%')->orWhere('description','like','%'. $request->search .'%')->get();
+        $result = Icd::where('code','like','%'. $request->search .'%')
+        ->orWhere('description','like','%'. $request->search .'%')
+        ->get();
         return view('pages.ICD', compact('result'));
     }
 

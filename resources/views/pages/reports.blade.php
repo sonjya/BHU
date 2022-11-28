@@ -27,26 +27,34 @@
                 <table class="table table-hover">
                     <thead>
                         <tr>
-                            <th class="col-1">Date</th>
+                            <th class="col-2">Date of Consultation</th>
                             <th>Name</th>
                             <th>Age</th>
                             <th>Sex</th>
+                            <th>Diagnosis</th>
                             <th>ICD 10</th>
+                            <th>Address</th>
+                            <th>Physician</th>
                             <th>Actions</th>
                         </tr>
                     </thead>
                     <tbody>
-                       <tr>
-                            <td>2022-11-23</td>
-                            <td>Toyiks Bronze</td>
-                            <td>18</td>
-                            <td>Male</td>
-                            <td>ADD-B99</td>
-                            <td>
-                                <a href="" class="btn btn-outline-warning btn-sm"><span class="mdi mdi-file-edit"></span></a>
-                                <a href="" class="btn btn-outline-danger btn-sm"><span class="mdi mdi-delete-forever"></span></a>
-                            </td>
-                       </tr>
+                        @foreach ($result as $item)
+                            <tr>
+                                <td>{{$item->created_at}}</td>
+                                <td>{{$item->name}}</td>
+                                <td>{{$item->age}}</td>
+                                <td>{{$item->sex}}</td>
+                                <td>{{$item->diagnosis}}</td>
+                                <td>{{$item->ICD10}}</td>
+                                <td>{{$item->address}}</td>
+                                <td>{{$item->physician}}</td>
+                                <td>
+                                    <a href="" class="btn btn-outline-warning btn-sm"><span class="mdi mdi-file-edit"></span></a>
+                                    <a href="" class="btn btn-outline-danger btn-sm"><span class="mdi mdi-delete-forever"></span></a>
+                                </td>
+                            </tr>
+                        @endforeach
                     </tbody>
                 </table>
     
@@ -57,35 +65,52 @@
     <div class="modal fade" id="staticBackdrop" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1" aria-labelledby="staticBackdropLabel" aria-hidden="true">
         <div class="modal-dialog modal-dialog-centered modal-dialog-scrollable">
             <div class="modal-content">
-                <div class="modal-header">
-                    <h1 class="modal-title fs-5" id="staticBackdropLabel">ADD REPORT</h1>
-                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
-                </div>
-                <div class="modal-body">
-                    <div class="mb-3">
-                        <label>Name:</label>
-                        <input type="text" class="form-control" name="name" placeholder="Name" required>
+                <form action="/addReport" method="post">
+                    @csrf
+                    <div class="modal-header">
+                        <h1 class="modal-title fs-5" id="staticBackdropLabel">ADD REPORT</h1>
+                        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
                     </div>
-                    <div class="mb-3">
-                        <label>Age:</label>
-                        <input type="text" class="form-control" name="age" placeholder="Age" required>
+                    <div class="modal-body">
+                        <div class="mb-3">
+                            <label>Name:</label>
+                            <input type="text" class="form-control" name="name" placeholder="Name" required>
+                        </div>
+                        <div class="mb-3">
+                            <label>Age:</label>
+                            <input type="text" class="form-control" name="age" placeholder="Age" required>
+                        </div>
+                        <div class="mb-3">
+                            <label>Age:</label>
+                            <select class="form-select" name="sex">
+                                <option value="Male">Male</option>
+                                <option value="Female">Female</option>
+                            </select>
+                        </div>
+                        <div class="mb-3">
+                            <label>Diagnosis:</label>
+                            <input type="text" class="form-control" name="diagnosis" placeholder="Diagnosis" required>
+                        </div>
+                        <div class="mb-3">
+                            <label>ICD-10:</label>
+                            <input type="text" class="form-control" name="ICD10" placeholder="ICD Code" required>
+                        </div>
+                        <div class="mb-3">
+                            <label>Address:</label>
+                            <input type="text" class="form-control" name="address" placeholder="Address" required>
+                        </div>
+                        <div class="mb-3">
+                            <label>Physician:</label>
+                            <input type="text" class="form-control" name="physician" placeholder="Physician" required>
+                        </div>
                     </div>
-                    <div class="mb-3">
-                        <label>Sex:</label>
-                        <input type="text" class="form-control" name="sex" placeholder="Sex" required>
+                    <div class="modal-footer">
+                        <input type="submit" class="btn btn-outline-primary" value="ADD">
                     </div>
-                    <div class="mb-3">
-                        <label>ICD-10:</label>
-                        <input type="text" class="form-control" name="icd" placeholder="Name" required>
-                    </div>
-                </div>
-                <div class="modal-footer">
-                    <button type="button" class="btn btn-primary">ADD</button>
-                </div>
+                </form>
             </div>
         </div>
     </div>
-
 
     @extends('common.scripts')
 </body>

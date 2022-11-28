@@ -39,6 +39,8 @@
                         @endforeach
                     </tbody>
                 </table>
+                <hr>
+                <p style="color:red;">There are over a thousand of items, the items listed above are limited, please search the specific item on the search box.</p>
                 <form action="/addICD" method="post">
                     @csrf
                     <div class="row">
