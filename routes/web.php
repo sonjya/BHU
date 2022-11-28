@@ -3,6 +3,7 @@
 use App\Http\Controllers\UserController;
 use App\Http\Controllers\DashboardController;
 use App\Http\Controllers\IcdController;
+use App\Http\Controllers\RecordController;
 use App\Http\Controllers\ReportController;
 use Illuminate\Support\Facades\Route;
 
@@ -21,9 +22,9 @@ Route::get('/', function () {
     return view('index');
 });
 
-Route::get('/records', function () {
+Route::get('/reports', function () {
     if(session('id')) {
-        return view('pages.records');
+        return view('pages.reports');
     } else {
         return redirect('/');
     }
@@ -34,6 +35,6 @@ Route::get('/logout',[UserController::class,'logoutUser']);
 Route::post('/searchICD',[IcdController::class,'searchICD']);
 Route::get('/ICD',[IcdController::class,'getICD']);
 Route::post('/addICD',[IcdController::class,'addICD']);
-Route::get('/reports',[ReportController::class,'getReports']);
-Route::post('/addReport',[ReportController::class,'addReport']);
+Route::get('/records',[RecordController::class,'getRecords']);
+Route::post('/addRecord',[RecordController::class,'addRecord']);
 Route::get('/dashboard',[DashboardController::class,'getReportData']);

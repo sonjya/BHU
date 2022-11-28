@@ -7,8 +7,8 @@
         <h3 class="offcanvas-user-name mt-2">{{session('fullName')}}</h3>
         <hr>
         <a href="/dashboard" class="btn col-12 mb-3 sidebar-btn"><h5><span class="mdi mdi-view-dashboard"></span> Dashboard</h5></a>
-        <a href="/records" class="btn col-12 mb-3 sidebar-btn"><h5><span class="mdi mdi-book-open-page-variant"></span> Records</h5></a>
         <a href="/reports" class="btn col-12 mb-3 sidebar-btn"><h5><span class="mdi mdi-chart-areaspline-variant"></span> Reports</h5></a>
+        <a href="/records" class="btn col-12 mb-3 sidebar-btn"><h5><span class="mdi mdi-book-open-page-variant"></span> Records</h5></a>
         <a href="/ICD" class="btn col-12 mb-3 sidebar-btn"><h5><span class="mdi mdi-barcode"></span> ICD Codes</h5></a>
         <a href="/logout" class="btn col-12 mb-3 sidebar-btn-logout sidebar-logout-button"><h5><span class="mdi mdi-logout-variant"></span> Logout</h5></a>
     </div>

@@ -11,7 +11,7 @@ class DashboardController extends Controller
     function getReportData() {
 
         if(session('id')) {
-            $result = DB::table('reports')
+            $result = DB::table('records')
             ->select('ICD10', DB::raw('count(*) as total'))
             ->groupBy('ICD10')
             ->get();
