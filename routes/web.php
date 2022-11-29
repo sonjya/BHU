@@ -22,13 +22,13 @@ Route::get('/', function () {
     return view('index');
 });
 
-Route::get('/reports', function () {
-    if(session('id')) {
-        return view('pages.reports');
-    } else {
-        return redirect('/');
-    }
-});
+// Route::get('/reports', function () {
+//     if(session('id')) {
+//         return view('pages.reports');
+//     } else {
+//         return redirect('/');
+//     }
+// });
 
 Route::post('/login',[UserController::class,'authUser']);
 Route::get('/logout',[UserController::class,'logoutUser']);
@@ -38,3 +38,6 @@ Route::post('/addICD',[IcdController::class,'addICD']);
 Route::get('/records',[RecordController::class,'getRecords']);
 Route::post('/addRecord',[RecordController::class,'addRecord']);
 Route::get('/dashboard',[DashboardController::class,'getReportData']);
+Route::post('/searchRecord',[RecordController::class,'searchRecord']);
+Route::get('/reports',[ReportController::class,'getData']);
+Route::post('/searchReport',[ReportController::class,'searchReport']);

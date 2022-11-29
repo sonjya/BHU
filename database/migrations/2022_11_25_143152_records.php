@@ -13,12 +13,17 @@ return new class extends Migration
      */
     public function up()
     {
-        Schema::create('records', function (Blueprint $table) {
-            $table->integer('recordID')->autoIncrement();
+        Schema::create(' records', function (Blueprint $table) {
+            $table->integer('reportID')->autoIncrement();
+            $table->integer('categoryID');
             $table->string('name');
-            $table->string('age');
+            $table->integer('age');
             $table->string('sex');
-            $table->string('icdCode');
+            $table->string('diagnosis');
+            $table->string('ICD10');
+            $table->string('address');
+            $table->string('physician');
+            $table->string('month');
             $table->timestamps();
         });
     }

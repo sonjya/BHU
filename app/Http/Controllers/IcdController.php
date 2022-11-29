@@ -17,10 +17,6 @@ class IcdController extends Controller
         } else {
             return redirect('/');
         }
-        // $result = Icd::orderby('code')
-        // ->limit(10)
-        // ->get();
-        // return view('pages.ICD', compact('result'));
     }
 
     function searchICD(Request $request) {

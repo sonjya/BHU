@@ -13,9 +13,9 @@ return new class extends Migration
      */
     public function up()
     {
-        Schema::create('reports', function (Blueprint $table) {
-            $table->integer('reportID')->autoIncrement();
-            $table->integer('questionID');
+        Schema::create('recordcategories', function (Blueprint $table) {
+            $table->integer('categoryID')->autoIncrement();
+            $table->string('description');
             $table->timestamps();
         });
     }
@@ -27,6 +27,6 @@ return new class extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('reports');
+        Schema::dropIfExists('recordcategories');
     }
 };

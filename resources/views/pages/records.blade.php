@@ -13,37 +13,41 @@
         <div class="card component">
             <div class="card-body">
                 <h1>Records</h1>
-                <div class="row">
-                    <div class="col-3">
-                        <select class="form-select mt-2" name="recordToAdd">
-                            <option selected>Open this select menu</option>
-                            <option value="1">One</option>
-                            <option value="2">Two</option>
-                            <option value="3">Three</option>
-                        </select>
+                <form action="/searchRecord" method="post">
+                    @csrf
+                    <div class="row">
+                        <div class="col-2">
+                            <button type="button" class="btn btn-outline-primary mt-2" data-bs-toggle="modal" data-bs-target="#staticBackdrop">
+                                <span class="mdi mdi-file-document-plus"></span> ADD
+                            </button>
+                        </div>
+                        <div class="col-3">
+    
+                        </div>
+                        <div class="col-3">
+                            <select class="form-select mt-2" name="recordToSearch">
+                                <option value="1">Maternal Care & Natality</option>
+                                <option value="2">Notifiable Disease</option>
+                                <option value="3">Family Program</option>
+                                <option value="4">Family Planning Program</option>
+                                <option value="5">Diarrhea</option>
+                                <option value="6">Pneumonia</option>
+                                <option value="7">Morbidity Line Listing of Patients</option>
+                                <option value="8">Woman Reproductive Age (WRA)</option>
+                                <option value="9">Mortality Report: Line Listing of Deaths</option>
+                            </select>
+                        </div>
+                        <div class="col-4">
+                            <input type="text" name="search" class="form-control mt-2" placeholder="Search">
+                        </div>
                     </div>
-                    <div class="col-2">
-                        <button type="button" class="btn btn-outline-primary mt-2" data-bs-toggle="modal" data-bs-target="#staticBackdrop">
-                            <span class="mdi mdi-file-document-plus"></span> ADD
-                        </button>
-                    </div>
-                    <div class="col-3">
-                        <select class="form-select mt-2" name="recordToSearch">
-                            <option selected>Open this select menu</option>
-                            <option value="1">One</option>
-                            <option value="2">Two</option>
-                            <option value="3">Three</option>
-                        </select>
-                    </div>
-                    <div class="col-4">
-                        <input type="text" name="search" class="form-control mt-2" placeholder="Search">
-                    </div>
-                </div>
+                </form>
                 <hr>
                 <table class="table table-hover">
                     <thead>
                         <tr>
                             <th class="col-2">Date of Consultation</th>
+                            <th>Category</th>
                             <th>Name</th>
                             <th>Age</th>
                             <th>Sex</th>
@@ -58,6 +62,7 @@
                         @foreach ($result as $item)
                             <tr>
                                 <td>{{$item->created_at}}</td>
+                                <td>{{$item->categoryID}}</td>
                                 <td>{{$item->name}}</td>
                                 <td>{{$item->age}}</td>
                                 <td>{{$item->sex}}</td>
@@ -88,6 +93,20 @@
                         <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
                     </div>
                     <div class="modal-body">
+                        <div class="mb-3">
+                            <label>Category:</label>
+                            <select class="form-select mt-2" name="recordToAdd">
+                                <option value="1">Maternal Care & Natality</option>
+                                <option value="2">Notifiable Disease</option>
+                                <option value="3">Family Program</option>
+                                <option value="4">Family Planning Program</option>
+                                <option value="5">Diarrhea</option>
+                                <option value="6">Pneumonia</option>
+                                <option value="7">Morbidity Line Listing of Patients</option>
+                                <option value="8">Woman Reproductive Age (WRA)</option>
+                                <option value="9">Mortality Report: Line Listing of Deaths</option>
+                            </select>
+                        </div>
                         <div class="mb-3">
                             <label>Name:</label>
                             <input type="text" class="form-control" name="name" placeholder="Name" required>

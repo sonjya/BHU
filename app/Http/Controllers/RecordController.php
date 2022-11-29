@@ -10,7 +10,8 @@ class RecordController extends Controller
     function getRecords(){
 
         if(session('id')) {
-            $result = Record::orderby('reportID')
+            $result = Record::where('categoryID',1)
+            ->orderby('reportID')
             ->limit(10)
             ->get();
             return view('pages.records',compact('result'));
@@ -22,6 +23,7 @@ class RecordController extends Controller
     function addRecord(Request $request) {
         $item = new Record;
         $item->reportID = 0;
+        $item->categoryID = $request->recordToAdd;
         $item->name = $request->name;
         $item->age = $request->age;
         $item->sex = $request->sex;
@@ -32,4 +34,12 @@ class RecordController extends Controller
         $item->save();
         return redirect('/records');
     }
+    
+    function searchRecord(Request $request) {
+        $result = Record::where('categoryID',$request->recordToSearch)
+        ->where('name','like','%'. $request->search .'%')
+        ->get();
+        return view('pages.records',compact('result'));
+    }
+
 }
