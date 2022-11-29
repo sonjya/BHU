@@ -23,35 +23,13 @@
     </div>
 
     <script>
-
         var xValues = [];
         var yValues = [];
-        var barColors = ["red", "green","blue","orange","brown"];
-    
-        
-        new Chart("reportChart", {
-          type: "bar",
-          data: {
-            labels: xValues,
-            datasets: [{
-              backgroundColor: barColors,
-              data: yValues
-            }]
-          },
-          options: {
-            legend: {display: false},
-            title: {
-              display: true,
-              text: "Reports"
-            }
-          }
-        });
     </script>
-
 
     @foreach ($result as $item)
         <script>
-            xValues.push('{{$item->ICD10}}');
+            xValues.push('{{$item->description}}');
             yValues.push('{{$item->total}}');
         </script>
     @endforeach
@@ -61,6 +39,29 @@
     </script>
 
     @extends('common.scripts')
+
+    <script>
+        var barColors = ["red", "green","blue","orange","brown","yellow","violet","black","pink"];
+    
+        
+        new Chart("reportChart", {
+        type: "bar",
+        data: {
+            labels: xValues,
+            datasets: [{
+            backgroundColor: barColors,
+            data: yValues
+            }]
+        },
+        options: {
+            legend: {display: false},
+            title: {
+            display: true,
+            text: "Reports"
+            }
+        }
+        });
+    </script>
 </body>
 
 <style>

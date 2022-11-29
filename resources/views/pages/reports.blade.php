@@ -49,7 +49,7 @@
                         <tr>
                             <th>CATEGORY</th>
                             <th>MONTH OF</th>
-                            <th>OUTCOME</th>
+                            <th>TOTAL</th>
                         </tr>
                     </thead>
                     <tbody>

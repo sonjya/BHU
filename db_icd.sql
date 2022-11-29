@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Nov 28, 2022 at 09:03 AM
+-- Generation Time: Nov 29, 2022 at 09:25 AM
 -- Server version: 10.4.24-MariaDB
 -- PHP Version: 8.1.6
 
@@ -45493,7 +45493,8 @@ INSERT INTO `migrations` (`id`, `migration`, `batch`) VALUES
 (4, '2019_12_14_000001_create_personal_access_tokens_table', 1),
 (5, '2022_11_23_074411_icds', 1),
 (6, '2022_11_25_143152_records', 2),
-(7, '2022_11_28_051321_reports', 2);
+(7, '2022_11_28_051321_reports', 2),
+(8, '2022_11_29_042154_recordcategories', 3);
 
 -- --------------------------------------------------------
 
@@ -45529,27 +45530,40 @@ CREATE TABLE `personal_access_tokens` (
 -- --------------------------------------------------------
 
 --
--- Table structure for table `records`
+-- Table structure for table `recordcategories`
 --
 
-CREATE TABLE `records` (
-  `recordID` int(11) NOT NULL,
-  `name` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL,
-  `age` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL,
-  `sex` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL,
-  `icdCode` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL,
+CREATE TABLE `recordcategories` (
+  `categoryID` int(11) NOT NULL,
+  `description` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL,
   `created_at` timestamp NULL DEFAULT NULL,
   `updated_at` timestamp NULL DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 
+--
+-- Dumping data for table `recordcategories`
+--
+
+INSERT INTO `recordcategories` (`categoryID`, `description`, `created_at`, `updated_at`) VALUES
+(1, 'Maternal Care & Natality', NULL, NULL),
+(2, 'Notifiable Disease', NULL, NULL),
+(3, 'Family Program', NULL, NULL),
+(4, 'Family Planning Program', NULL, NULL),
+(5, 'Diarrhea', NULL, NULL),
+(6, 'Pneumonia', NULL, NULL),
+(7, 'Morbidity Line Listing of Patients', NULL, NULL),
+(8, 'Woman Reproductive Age (WRA)', NULL, NULL),
+(9, 'Mortality Report: Line Listing of Deaths', NULL, NULL);
+
 -- --------------------------------------------------------
 
 --
--- Table structure for table `reports`
+-- Table structure for table `records`
 --
 
-CREATE TABLE `reports` (
+CREATE TABLE `records` (
   `reportID` int(11) NOT NULL,
+  `categoryID` int(11) NOT NULL,
   `name` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL,
   `age` int(11) NOT NULL,
   `sex` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL,
@@ -45557,18 +45571,27 @@ CREATE TABLE `reports` (
   `ICD10` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL,
   `address` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL,
   `physician` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL,
+  `month` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL,
   `created_at` timestamp NULL DEFAULT NULL,
   `updated_at` timestamp NULL DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 
 --
--- Dumping data for table `reports`
+-- Dumping data for table `records`
 --
 
-INSERT INTO `reports` (`reportID`, `name`, `age`, `sex`, `diagnosis`, `ICD10`, `address`, `physician`, `created_at`, `updated_at`) VALUES
-(1, 'Ariel Abo-Abo', 22, 'Male', 'Diarhea', 'A0001', 'Panacan', 'Althea Watapampa', '2022-11-27 22:08:04', '2022-11-27 22:08:04'),
-(2, 'James Vecina', 23, 'Male', 'Diarhea', 'F2311', 'Mintal', 'Althea Watapampa', '2022-11-27 23:14:18', '2022-11-27 23:14:18'),
-(3, 'Sample Data', 21, 'Female', 'Diarhea', 'A0001', 'Panacan', 'Althea Watapampa', '2022-11-27 23:32:58', '2022-11-27 23:32:58');
+INSERT INTO `records` (`reportID`, `categoryID`, `name`, `age`, `sex`, `diagnosis`, `ICD10`, `address`, `physician`, `month`, `created_at`, `updated_at`) VALUES
+(1, 2, 'Ariel Abo-Abo', 22, 'Male', 'Diarhea', 'A0001', 'Panacan', 'Althea Watapampa', 'November', '2022-11-27 22:08:04', '2022-11-27 22:08:04'),
+(2, 2, 'James Vecina', 23, 'Male', 'Diarhea', 'F2311', 'Mintal', 'Althea Watapampa', 'November', '2022-11-27 23:14:18', '2022-11-27 23:14:18'),
+(3, 2, 'Sample Data', 21, 'Female', 'Diarhea', 'A0001', 'Panacan', 'Althea Watapampa', 'November', '2022-11-27 23:32:58', '2022-11-27 23:32:58'),
+(4, 2, 'Miku Relampagos', 14, 'Male', 'Fever', 'A0109', 'Panacan', 'Althea Watapampa', 'November', '2022-11-28 03:37:46', '2022-11-28 03:37:46'),
+(5, 2, 'James Vecina', 22, 'Male', 'Diarhea', 'A0001', 'Mintal', 'Althea Watapampa', 'November', '2022-11-28 05:20:03', '2022-11-28 05:20:03'),
+(6, 5, 'James Vecina', 22, 'Male', 'Quaranteen', 'R197', 'Mintal', 'Althea', 'November', '2022-11-28 21:11:44', '2022-11-28 21:11:44'),
+(7, 1, 'James Vecina', 22, 'Male', 'Diarrhea', 'A0001', 'Mintal', 'Althea', 'November', '2022-11-28 23:51:31', '2022-11-28 23:51:31'),
+(8, 3, 'James Vecina', 22, 'Male', 'asdasdasd', 'A0001', 'asdasd', 'Althea', 'November', '2022-11-28 23:51:59', '2022-11-28 23:51:59'),
+(9, 4, 'asdasdasd', 22, 'Male', 'asdasda', 'asdas', 'dasdasd', 'asdasdad', 'November', '2022-11-28 23:52:28', '2022-11-28 23:52:28'),
+(10, 9, 'asdasadsad', 22, 'Male', 'asdasd', 'asdasda', 'asdas', 'dasdasdd', 'November', '2022-11-28 23:52:37', '2022-11-28 23:52:37'),
+(15, 1, 'qweqw', 0, 'Male', 'qweqw', 'eqwe', 'qweqweq', 'weqwe', 'November', '2022-11-29 00:22:33', '2022-11-29 00:22:33');
 
 -- --------------------------------------------------------
 
@@ -45635,15 +45658,15 @@ ALTER TABLE `personal_access_tokens`
   ADD KEY `personal_access_tokens_tokenable_type_tokenable_id_index` (`tokenable_type`,`tokenable_id`);
 
 --
+-- Indexes for table `recordcategories`
+--
+ALTER TABLE `recordcategories`
+  ADD PRIMARY KEY (`categoryID`);
+
+--
 -- Indexes for table `records`
 --
 ALTER TABLE `records`
-  ADD PRIMARY KEY (`recordID`);
-
---
--- Indexes for table `reports`
---
-ALTER TABLE `reports`
   ADD PRIMARY KEY (`reportID`);
 
 --
@@ -45667,7 +45690,7 @@ ALTER TABLE `failed_jobs`
 -- AUTO_INCREMENT for table `migrations`
 --
 ALTER TABLE `migrations`
-  MODIFY `id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=8;
+  MODIFY `id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=9;
 
 --
 -- AUTO_INCREMENT for table `personal_access_tokens`
@@ -45676,16 +45699,16 @@ ALTER TABLE `personal_access_tokens`
   MODIFY `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT;
 
 --
+-- AUTO_INCREMENT for table `recordcategories`
+--
+ALTER TABLE `recordcategories`
+  MODIFY `categoryID` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=10;
+
+--
 -- AUTO_INCREMENT for table `records`
 --
 ALTER TABLE `records`
-  MODIFY `recordID` int(11) NOT NULL AUTO_INCREMENT;
-
---
--- AUTO_INCREMENT for table `reports`
---
-ALTER TABLE `reports`
-  MODIFY `reportID` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
+  MODIFY `reportID` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=16;
 
 --
 -- AUTO_INCREMENT for table `users`

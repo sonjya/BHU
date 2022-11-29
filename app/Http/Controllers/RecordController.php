@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\Models\Record;
+use Carbon\Carbon;
 
 class RecordController extends Controller
 {
@@ -21,6 +22,8 @@ class RecordController extends Controller
     }
 
     function addRecord(Request $request) {
+
+        $now = Carbon::now();
         $item = new Record;
         $item->reportID = 0;
         $item->categoryID = $request->recordToAdd;
@@ -31,8 +34,10 @@ class RecordController extends Controller
         $item->ICD10 = $request->ICD10;
         $item->address = $request->address;
         $item->physician = $request->physician;
+        $item->month = $now->monthName;;
         $item->save();
         return redirect('/records');
+
     }
     
     function searchRecord(Request $request) {
